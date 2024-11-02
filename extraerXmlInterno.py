@@ -1,13 +1,15 @@
 
-#  script para retornar el xml interno de la factura
+#  script para retornar el xml interno de la factura y los datos del xml Interno
+
 
 import xmltodict
+import json
 
 with open("factura.xml", "r", encoding="utf-8") as file:
     xml_data = file.read()
 
 # Convertir XML a diccionario
-diccionario = xmltodict.parse(xml_data)
+
 
 
 # Función para encontrar la primera aparición de "cbc:Description" ( contiene el xml con los datos de la factura)
@@ -30,4 +32,12 @@ def encontrar_xml(diccionario):
     return None  # Si no encuentra nada, devuelve None
 
 
+def getXmlInterno(xmlOriginal):
+    diccionario = xmltodict.parse(xmlOriginal)
+    return encontrar_xml(diccionario)
 
+def getPorductos(xmlinterno):
+    diccionario2 = xmltodict.parse(xmlinterno)
+    json_data2 = json.dumps(diccionario2, indent=4)
+    productos = diccionario2.get('Invoice').get('cac:InvoiceLine')
+    return productos

@@ -1,4 +1,4 @@
-#Covierte el xml interno en un diccionario con los porductos
+#extrae los productos del diccionario creado con el xml interno
 
 # retora: descripcion, percent(iva), cantidad, codigo(id del producto, en ocaciones se corresponde con el codigo de barras),
 # precio unitario antes de iva.

@@ -1,0 +1,9 @@
+# Ignora un archivo específico llamado factura.xml
+factura.xml
+
+# Ignora todos los archivos con extensión .txt
+*.txt
+
+# Ignora todos los archivos de tipo Excel (xls y xlsx)
+*.xls
+*.xlsx

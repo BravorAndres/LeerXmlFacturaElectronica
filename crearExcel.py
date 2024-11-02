@@ -5,15 +5,20 @@
 
 from datetime import datetime
 import pandas as pd
+import os
 
 
 
 def crearExcel(data):
+    print('archivos para crear axcel\n',data)      
     try:
+        
         fecha = datetime.now().strftime("%d-%m")  # Ejemplo: '29-10'
         nombre_archivo = f"productos_{fecha}.xlsx"
         if os.path.exists(nombre_archivo):
             os.remove(nombre_archivo)
+
+          
     
         # Crear un DataFrame a partir del diccionario
         df = pd.DataFrame.from_dict(data)
