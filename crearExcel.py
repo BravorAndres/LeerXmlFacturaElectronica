@@ -9,12 +9,14 @@ import os
 
 
 
-def crearExcel(data):
-    print('archivos para crear axcel\n',data)      
+
+
+def crearExcel(data,name):
+   # print('archivos para crear axcel\n',data)      
     try:
         
         fecha = datetime.now().strftime("%d-%m")  # Ejemplo: '29-10'
-        nombre_archivo = f"productos_{fecha}.xlsx"
+        nombre_archivo = f"{name}_{fecha}.xlsx"
         if os.path.exists(nombre_archivo):
             os.remove(nombre_archivo)
 
@@ -25,5 +27,5 @@ def crearExcel(data):
         # Guardar el DataFrame en un archivo Excel
         df.to_excel(nombre_archivo, index=False)
         print("Archivo Excel generado exitosamente.")
-    except:
-        print('error al crear archivo excel')
+    except Exception as e:
+        print('error al crear archivo excel', e)

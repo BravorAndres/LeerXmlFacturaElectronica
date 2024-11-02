@@ -6,7 +6,7 @@
 
 
 
-# Función para extraer los productos. Recibe el 
+# Función para extraer los productos. Recibe el xml interno
 def extraer_productos(data):
     resultados = []
     for producto in data:
@@ -17,24 +17,30 @@ def extraer_productos(data):
         cantidad = producto.get('cbc:InvoicedQuantity',{}).get('#text')
 
         try:
-            percent = producto.get('cac:TaxTotal', {}).get('cac:TaxSubtotal', {}).get('cac:TaxCategory', {}).get('cbc:Percent', 'N/A')
+            percent = producto.get('cac:TaxTotal', {}).get('cac:TaxSubtotal', {}).get('cac:TaxCategory', {}).get('cbc:Percent',0)
         except:
-            percent = 'N/A'
+            percent = '0'
         
         try:
             codigo = producto.get('cac:Item').get('cac:StandardItemIdentification',{}).get('cbc:ID',{}).get('#text','N/A')
         except:
-            codigo = 'N/A'
+            codigo = 'error'
+        try:
+            descuento = producto.get('cac:AllowanceCharge', {}).get('cbc:MultiplierFactorNumeric')
+
+        except:
+            descuento = '0'
 
         precio = producto.get('cac:Price', {}).get('cbc:PriceAmount', {}).get('#text', 'N/A')
         # Guardar los datos extraídos en un diccionario
         resultado = {
-            'Codigo': codigo,
+            'codigo': codigo,
            # 'ID': id_producto,
-            'Descripción': descripcion,
+            'descripción': descripcion,
             'cantidad': cantidad,
-            'Percent': percent,
-            'Precio': precio
+            'iva': percent,
+            'precio': precio,
+            'descuento': descuento
         }
         resultados.append(resultado)
     
