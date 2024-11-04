@@ -23,12 +23,12 @@ def procesarDatosComoSys(data):
         ref = producto['referencia']
         Servicio = None
         Detalle =  producto['detalle']
-        Cantidad =  producto['Cantidad']
+        Cantidad =  str(producto['Cantidad'])
         precio = '0.00'
-        VrUnit = producto['unt + iva']
-        vrTotal =  producto['Total']
+        VrUnit = str(producto['unt + iva'])
+        vrTotal =  str(producto['Total'])
         vrIva = '0.00'
-        TotalConIva = producto['Total']
+        TotalConIva = str(producto['Total'])
         iva = '0.00'
         Tiva = None
         ico = '0.00'
