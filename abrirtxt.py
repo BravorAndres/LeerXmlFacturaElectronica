@@ -1,14 +1,23 @@
 
+
+def procesarLinea(line):
+    line = line.strip()
+    line = line.strip('\n')
+    referencia, detalle, codigo = line.split('","')
+    referencia = referencia.strip('"')
+    codigo = codigo.strip('"')
+    codigo, precioU = codigo.split(',')
+    codigo = codigo.strip('"')
+    detalle = detalle.strip('"')
+
+    return codigo,referencia,detalle,precioU
+
+
 def leerTxt():
-    productos_txt = {}
+    productos = {}
     with open('productosTxt.txt', 'r', encoding='latin-1') as file:
         for line in file:
-            # Limpiar línea y dividir en componentes
-            line = line.strip()
-            line = line.strip('\n')
-            referencia, detalle, codigo = line.split('","')
-        
-            # Guardar el producto en el diccionario con el código como clave
-            productos_txt[codigo.strip('"')] = {'referencia': referencia.strip('"'), 'detalle': detalle.strip('"')}
-    return productos_txt
-    #return productos_txt
+            codigo,referencia,detalle,precioU = procesarLinea(line)
+            productos[codigo] = {'referencia':referencia, 'detalle':detalle,'precio':precioU}
+    return productos
+

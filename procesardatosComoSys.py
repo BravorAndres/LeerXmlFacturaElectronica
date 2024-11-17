@@ -21,33 +21,17 @@ def procesarDatosComoSys(data):
     resultadosSys = []
     for producto in data:
         ref = producto['referencia']
-        Servicio = None
         Detalle =  producto['detalle']
         Cantidad =  str(producto['Cantidad'])
-        precio = '0.00'
         VrUnit = str(producto['unt + iva'])
-        vrTotal =  str(producto['Total'])
-        vrIva = '0.00'
         TotalConIva = str(producto['Total'])
-        iva = '0.00'
-        Tiva = None
-        ico = '0.00'
-        ref1 = None
 
         resultadoSys = {
             'Ref' : ref,
-            'Servicio':  Servicio,
             'Detalle': Detalle,
-            'Precio': precio,
             'Cant': Cantidad,
-            'Vr/unit': VrUnit,
-            'Vr/total': vrTotal,
-            'Vr/iva': vrIva,
-            'Total+iva': TotalConIva,
-            '%iva' : iva,
-            'Tiva': Tiva,
-            'ico': ico,
-            'ref1': ref1
+            'Vrunit': VrUnit,
+            'Total': TotalConIva
         }
         resultadosSys.append(resultadoSys)
 

@@ -5,7 +5,6 @@ def canjearProductos(data,txt):
     
     resultados = []
     fallidos = []
-    print('priductos del xml: ',len(data),'\n===================')
     
     for producto in data:
         codigo = producto.get('Codigo')

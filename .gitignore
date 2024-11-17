@@ -7,6 +7,10 @@ factura.xml
 # Ignora todos los archivos de tipo Excel (xls y xlsx)
 *.xls
 *.xlsx
+*.csv
 
 #ignorar cache de python
 __pycache__
+
+main.spec
+

@@ -7,6 +7,9 @@ from crearExcel import crearExcel
 from abrirtxt import leerTxt
 from canjearProductos import canjearProductos
 from procesardatosComoSys import procesarDatosComoSys
+from crearCSV import crearCSV
+
+from compararProductos import compararProductos
 
 import json
 
@@ -19,25 +22,21 @@ if (xmlninterno):
 
     productos = getPorductos(xmlninterno)
 
-
     productosFactura = extraer_productos(productos)
     
     productosPrecio = calcularPrecios(productosFactura)
 
-    
-
     productosTxt = leerTxt()#debe devolver un diccionario en donde la clave es el codigo de barras
                             #y el resultado es otro diccionario con la referencia y el detalle
-
-
-    #print(productosTxt)
 
     resultados = canjearProductos(productosPrecio,productosTxt)
 
     resultadosSys = procesarDatosComoSys(resultados)
 
-    crearExcel(resultadosSys,'resultados_')
+    compararProductos(productosPrecio,productosTxt)
 
+    #crearExcel(resultadosSys,'resultados_')
+    crearCSV(resultadosSys)
     #tablaFinal = canjearProductos(productosPrecio,productosTxt)
     
     #print(tablaFinal)
